@@ -8,6 +8,8 @@ interface Book {
   subtitle?: string;
   description: string;
   amazonUrl: string;
+  coverImage?: string;
+  isNew?: boolean;
 }
 
 interface Series {
@@ -31,7 +33,18 @@ const NEWEST_BOOK = {
   amazonUrl: "https://www.amazon.com/Gray-Sides-Dawn-DEFY-Harrys/dp/1068871792/",
   accentColor: "#1B3A5C",
   coverBg: "#0F2133",
+  coverImage: "/book-covers/gray-sides-02-harrys-gold.webp",
 };
+
+const STANDALONE_BOOKS: Book[] = [
+  {
+    title: "Clowns in Camouflage",
+    description:
+      "A darkly comic standalone novel from Patrick D. Ferris — where absurdity and danger collide in ways only Ferris can imagine.",
+    amazonUrl: "https://www.amazon.com/s?k=Clowns+in+Camouflage+Patrick+Ferris",
+    coverImage: "/book-covers/clowns-in-camouflage.webp",
+  },
+];
 
 const SERIES: Series[] = [
   {
@@ -49,25 +62,25 @@ const SERIES: Series[] = [
         subtitle: "Book 1",
         description:
           "An old cruiser snatched from the breaker's yard, refitted with scavenged guns and cast-off crew. Under the command of Captain Menzies and sharp-tongued Commander Harry Holden, HMS Brock sails into the teeth of the Atlantic war — and proves she's no museum piece.",
-        amazonUrl:
-          "https://www.amazon.com/Gray-Sides-Dawn-HMS-Brock/dp/1068871733/",
+        amazonUrl: "https://www.amazon.com/Gray-Sides-Dawn-HMS-Brock/dp/1068871733/",
+        coverImage: "/book-covers/gray-sides-01-hms-brock.jpg",
       },
       {
         title: "Harry's Gold",
         subtitle: "Book 2 — Newest Release",
         description:
           "Captain Harry Holden and his 'Holden's Privateers' are assigned a secret mission: cross the most Axis-patrolled sea in the world to recover millions in hidden gold bars before the Germans do. An Adriatic pirate, 100 Royal Marines, and a Jutland veteran join the operation.",
-        amazonUrl:
-          "https://www.amazon.com/Gray-Sides-Dawn-DEFY-Harrys/dp/1068871792/",
+        amazonUrl: "https://www.amazon.com/Gray-Sides-Dawn-DEFY-Harrys/dp/1068871792/",
+        coverImage: "/book-covers/gray-sides-02-harrys-gold.webp",
         isNew: true,
-      } as Book & { isNew?: boolean },
+      },
       {
-        title: "Rebel Sister",
+        title: "Rebel Rose",
         subtitle: "Book 3",
         description:
           "Newly promoted Captain Harry Holden takes command of HMCS Rose — a luxury liner frantically converted for war — and plies the harsh northern Pacific seeking the Axis foes. Ancient guns, a cast-off crew, and a horizon bristling with torpedoes.",
-        amazonUrl:
-          "https://www.amazon.com/Gray-Sides-Dawn-Rebel-Sister/dp/1068871776/",
+        amazonUrl: "https://www.amazon.com/Gray-Sides-Dawn-Rebel-Sister/dp/1068871776/",
+        coverImage: "/book-covers/gray-sides-03-rebel-rose.webp",
       },
     ],
     reviews: [
@@ -96,48 +109,48 @@ const SERIES: Series[] = [
         subtitle: "Book 1",
         description:
           "Terry Reid arrives in future America facing a series of deadly murders and a Revisionist State tightening its grip. She trusts no one, enlisting the help of a poet, a drifter, and a height-challenged accordion player. Who is really pulling the strings?",
-        amazonUrl:
-          "https://www.amazon.com/gp/product/B07PBDQMNB/",
+        amazonUrl: "https://www.amazon.com/gp/product/B07PBDQMNB/",
+        coverImage: "/book-covers/terry-reid-01-his-disciples-watch.jpg",
       },
       {
         title: "His Disciples Sleep",
         subtitle: "Book 2",
         description:
           "Terry Reid returns after the presidential assassination. Jess fights for her life as deadly 'Verbeelding' dream-glasses become untraceable instruments of murder. Post-Revisionist America's bad actors won't go quietly.",
-        amazonUrl:
-          "https://www.amazon.com/gp/product/B07PBDQMNB/",
+        amazonUrl: "https://www.amazon.com/gp/product/B07PBDQMNB/",
+        coverImage: "/book-covers/terry-reid-02-his-disciples-sleep.jpg",
       },
       {
         title: "His Disciples Deceive",
         subtitle: "Book 3",
         description:
           "Terry wakes on a disabled plane over Afghanistan, drafted into a doomed mission to find a kidnapped American president. A booze-soaked actor stands in for him back home — one slip from triggering a world war.",
-        amazonUrl:
-          "https://www.amazon.com/dp/1999092015/",
+        amazonUrl: "https://www.amazon.com/dp/1999092015/",
+        coverImage: "/book-covers/terry-reid-03-his-disciples-deceive.webp",
       },
       {
         title: "His Disciples Replicate",
         subtitle: "Book 4",
         description:
           "Billionaire Sandros Hammar's space-travel venture explodes — literally. Now the Disciples demand he reactivate two rogue A-bombs. Terry, on post-Brexit England, discovers her reputation has followed her across the ocean.",
-        amazonUrl:
-          "https://www.amazon.com/dp/199909204X/",
+        amazonUrl: "https://www.amazon.com/dp/199909204X/",
+        coverImage: "/book-covers/terry-reid-04-his-disciples-replicate.jpg",
       },
       {
         title: "His Disciples In Motion",
         subtitle: "Book 5",
         description:
           "Jess infiltrates an Alaskan commune hunting for her father. When the community's secretive 'Angel Protectors' bury a murder, Terry drops in. The idyllic wilderness has a dark, regimented heart — and giving up is not in Terry's DNA.",
-        amazonUrl:
-          "https://www.amazon.com/Disciples-Motion-Patrick-Douglas-Ferris/dp/1999092074/",
+        amazonUrl: "https://www.amazon.com/Disciples-Motion-Patrick-Douglas-Ferris/dp/1999092074/",
+        coverImage: "/book-covers/terry-reid-05-his-disciples-in-motion.jpg",
       },
       {
-        title: "His Disciples Vanish",
+        title: "His Disciples of Doom",
         subtitle: "Book 6",
         description:
-          "The final chapter of the Disciples saga. Major Terry Reid closes in on the last stronghold, chasing a small but terrifying bomb while a tech-titan 'frenemy' begs for protection at his lavish 'Techno-Scientist Ball' — the perfect stage for the Disciples to ride again.",
-        amazonUrl:
-          "https://www.amazon.com/gp/product/B07PBDQMNB/",
+          "The explosive finale of the Disciples saga. Major Terry Reid closes in on the last stronghold, chasing a small but terrifying bomb while a tech-titan 'frenemy' begs for protection at his lavish 'Techno-Scientist Ball' — the perfect stage for the Disciples to strike again.",
+        amazonUrl: "https://www.amazon.com/gp/product/B07PBDQMNB/",
+        coverImage: "/book-covers/terry-reid-06-his-disciples-of-doom.webp",
       },
     ],
     reviews: [
@@ -166,8 +179,8 @@ const SERIES: Series[] = [
         subtitle: "The Complete Series",
         description:
           "Five mysteries in one volume. Edward, Smitty, and Mae navigate smartphones, CCTV, and the London Underground armed with only Victorian instinct and each other. Chief Inspector Hardcastle is skeptical — but even he can't argue with results.",
-        amazonUrl:
-          "https://www.amazon.com/Time-Sleuths-Patrick-D-Ferris-ebook/dp/B0D8K3K7R1/",
+        amazonUrl: "https://www.amazon.com/Time-Sleuths-Patrick-D-Ferris-ebook/dp/B0D8K3K7R1/",
+        coverImage: "/book-covers/time-sleuths.jpg",
       },
     ],
     reviews: [
@@ -196,32 +209,32 @@ const SERIES: Series[] = [
         subtitle: "Larry & Giselle · Book 1",
         description:
           "Giselle arrives in America with nothing. A job at a small shop and a chance meeting with Larry and his cycling crew opens a door she never expected. An endearing odd couple among strangers, drawn together by speed, sweat, and something deeper.",
-        amazonUrl:
-          "https://www.amazon.com/Gypsy-Romance-Larry-Giselle/dp/1730936083/",
+        amazonUrl: "https://www.amazon.com/Gypsy-Romance-Larry-Giselle/dp/1730936083/",
+        coverImage: "/book-covers/gypsies-01-a-gypsy-romance.webp",
       },
       {
         title: "A Gypsy Engagement",
         subtitle: "Larry & Giselle · Book 2",
         description:
           "The stakes climb higher as Larry and Giselle's relationship deepens off the bike while the competitive pressure intensifies on it. Can their bond survive the demands of professional cycling — and each other?",
-        amazonUrl:
-          "https://www.amazon.com/gp/product/B07P844P2T/",
+        amazonUrl: "https://www.amazon.com/gp/product/B07P844P2T/",
+        coverImage: "/book-covers/gypsies-02-a-gypsy-engagement.webp",
       },
       {
         title: "A Gypsy Haunting",
         subtitle: "Larry & Giselle · Book 3",
         description:
           "Larry and Giselle settle in Goosefield, a small farm in northern Canada. Giselle's orphaned cousin Erika arrives from Trinidad and discovers cycling is her ticket out. But Larry secretly burns to ride the big races he was cheated from.",
-        amazonUrl:
-          "https://www.amazon.com/Gypsy-Haunting-Larry-Giselle-romance/dp/099198529X/",
+        amazonUrl: "https://www.amazon.com/Gypsy-Haunting-Larry-Giselle-romance/dp/099198529X/",
+        coverImage: "/book-covers/gypsies-03-a-gypsy-haunting.jpg",
       },
       {
         title: "A Gypsy Homecoming",
         subtitle: "Larry & Giselle · Book 4",
         description:
           "The final chapter of the Larry and Giselle saga — a homecoming in every sense of the word, bringing the series full circle with warmth, humour, and the spirit of the open road.",
-        amazonUrl:
-          "https://www.amazon.com/Gypsy-Homecoming-Patrick-Ferris/dp/1738965953/",
+        amazonUrl: "https://www.amazon.com/Gypsy-Homecoming-Patrick-Ferris/dp/1738965953/",
+        coverImage: "/book-covers/gypsies-04-a-gypsy-homecoming.jpg",
       },
     ],
     reviews: [
@@ -452,11 +465,27 @@ function BookCover({
   title,
   subtitle,
   bg,
+  coverImage,
+  isNew,
 }: {
   title: string;
   subtitle?: string;
   bg: string;
+  coverImage?: string;
+  isNew?: boolean;
 }) {
+  if (coverImage) {
+    return (
+      <div className="relative rounded-sm overflow-hidden w-full" style={{ aspectRatio: "2/3" }}>
+        <img src={coverImage} alt={title} className="w-full h-full object-cover" />
+        {isNew && (
+          <span className="absolute top-2 right-2 font-body text-[9px] font-semibold uppercase tracking-widest px-2 py-1 rounded bg-gold text-ink">
+            New
+          </span>
+        )}
+      </div>
+    );
+  }
   return (
     <div
       className="book-cover rounded-sm w-full flex flex-col items-center justify-end p-4"
@@ -527,6 +556,8 @@ function SeriesSection({ series, reversed }: { series: Series; reversed?: boolea
                 title={book.title}
                 subtitle={book.subtitle}
                 bg={series.coverBg}
+                coverImage={book.coverImage}
+                isNew={book.isNew}
               />
               <div className="mt-3 px-0.5">
                 <h3 className="font-body text-sm font-medium text-ink group-hover:text-burgundy transition-colors leading-snug">
@@ -606,6 +637,49 @@ function SeriesSection({ series, reversed }: { series: Series; reversed?: boolea
                 {review.attribution}
               </cite>
             </blockquote>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function StandaloneBooks() {
+  return (
+    <section className="border-b border-border py-20 md:py-28">
+      <div className="max-w-6xl mx-auto px-6">
+        <p className="font-body text-xs uppercase tracking-[0.2em] text-muted mb-4">
+          Standalone Fiction
+        </p>
+        <h2 className="font-display text-4xl md:text-5xl font-medium text-ink mb-12 leading-tight">
+          Beyond the Series
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+          {STANDALONE_BOOKS.map((book) => (
+            <a
+              key={book.title}
+              href={book.amazonUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block"
+            >
+              <BookCover
+                title={book.title}
+                bg="#2E2E3A"
+                coverImage={book.coverImage}
+              />
+              <div className="mt-3 px-0.5">
+                <h3 className="font-body text-sm font-medium text-ink group-hover:text-burgundy transition-colors leading-snug">
+                  {book.title}
+                </h3>
+                <p className="font-body text-xs text-muted mt-1 leading-relaxed">
+                  {book.description}
+                </p>
+                <span className="font-body text-xs font-medium text-muted mt-2 inline-block">
+                  Buy on Amazon ↗
+                </span>
+              </div>
+            </a>
           ))}
         </div>
       </div>
@@ -864,27 +938,16 @@ function NewBookBanner() {
             </div>
           </div>
 
-          {/* Cover placeholder */}
+          {/* Cover */}
           <div
-            className="hidden md:flex w-full rounded-sm flex-col items-center justify-end pb-8 px-6 text-center"
-            style={{
-              aspectRatio: "2/3",
-              background: "linear-gradient(160deg, #1B3A5C 0%, #0A1B2A 100%)",
-              border: "1px solid rgba(196,150,58,0.25)",
-            }}
+            className="hidden md:block w-full rounded-sm overflow-hidden"
+            style={{ aspectRatio: "2/3" }}
           >
-            <span
-              className="font-body text-[10px] uppercase tracking-widest mb-2"
-              style={{ color: "rgba(196,150,58,0.6)" }}
-            >
-              New Release
-            </span>
-            <span className="font-display italic text-xl font-semibold text-white/80 leading-snug">
-              Harry&rsquo;s Gold
-            </span>
-            <span className="font-body text-xs text-white/35 mt-1">
-              Gray Sides at Dawn
-            </span>
+            <img
+              src={NEWEST_BOOK.coverImage}
+              alt={NEWEST_BOOK.title}
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </div>
@@ -924,6 +987,7 @@ export default function Page() {
         <SeriesSection key={series.id} series={series} />
       ))}
       <ShortStories />
+      <StandaloneBooks />
       <Contact />
       <Footer />
     </main>
