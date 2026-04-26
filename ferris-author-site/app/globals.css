@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-dm-sans: 'DM Sans', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-dm-sans);
+  background-color: #FAF8F2;
+  color: #1A1A2E;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-cormorant);
+}
+
+/* Thin horizontal rule */
+.rule-thin {
+  border: none;
+  border-top: 1px solid #DDD8CC;
+}
+
+/* Book cover placeholder */
+.book-cover {
+  aspect-ratio: 2 / 3;
+  width: 100%;
+}
+
+/* Series accent border */
+.series-accent {
+  border-left: 3px solid;
+}
