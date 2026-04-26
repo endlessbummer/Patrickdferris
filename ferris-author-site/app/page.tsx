@@ -400,60 +400,50 @@ function Hero() {
 function About() {
   return (
     <section id="about" className="bg-parchment border-b border-border">
-      <div className="max-w-6xl mx-auto px-6 py-20 md:py-28">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-          {/* Photo placeholder */}
-          <div className="order-2 md:order-1">
-            <div
-              className="w-full max-w-sm mx-auto md:mx-0 rounded-sm"
-              style={{
-                aspectRatio: "4/5",
-                background: "linear-gradient(145deg, #2E2E3A 0%, #1A1A2E 100%)",
-              }}
-            >
-              <div className="w-full h-full flex flex-col items-center justify-center gap-3 opacity-30">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1">
-                  <circle cx="12" cy="8" r="4" />
-                  <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
-                </svg>
-                <p className="text-white text-xs font-body">Author photo</p>
-              </div>
-            </div>
+      <div className="max-w-6xl mx-auto px-6 py-16 md:py-24">
+        <div className="max-w-3xl">
+          <p className="font-body text-xs uppercase tracking-[0.2em] text-muted mb-5">
+            About the Author
+          </p>
+          <h2 className="font-display text-4xl md:text-5xl font-medium text-ink mb-8 leading-tight">
+            Stories from the
+            <br />
+            <em>Peace Country</em>
+          </h2>
+
+          {/* Pull quote accent */}
+          <p className="font-display text-xl md:text-2xl italic text-ink/70 leading-relaxed mb-8 border-l-2 border-gold pl-6">
+            Born in Winnipeg, raised in Victoria, and rooted in Fort St. John, B.C. since 1975 — Pat Ferris spent decades in the natural gas industry before retiring in 2015 to write full-time.
+          </p>
+
+          <div className="space-y-4 font-body text-muted leading-relaxed max-w-2xl">
+            <p>
+              He has produced four distinct series — the gritty, dystopian{" "}
+              <em>Terry Reid Cycle</em>; the WW2 naval adventure series{" "}
+              <em>Gray Sides at Dawn</em>; the time-travel mystery{" "}
+              <em>Time Sleuths</em>; and the warm cycling romance of the{" "}
+              <em>Gypsies</em> books — as well as short stories published in
+              compilations and a standalone novel.
+            </p>
+            <p>
+              A lifelong cyclist who has raced on- and off-road for decades, Ferris
+              brings authentic detail and hard-won experience to every page
+              he writes.
+            </p>
           </div>
 
-          {/* Bio */}
-          <div className="order-1 md:order-2">
-            <p className="font-body text-xs uppercase tracking-[0.2em] text-muted mb-4">
-              About the Author
-            </p>
-            <h2 className="font-display text-4xl md:text-5xl font-medium text-ink mb-6 leading-tight">
-              Stories from the
-              <br />
-              <em>Peace Country</em>
-            </h2>
-            <div className="space-y-4 font-body text-muted leading-relaxed">
-              <p>
-                Born in Winnipeg, Manitoba in 1954, Pat Ferris grew up in
-                Victoria and moved to Fort St. John in 1975 — a city carving
-                its identity from the rapidly expanding natural gas fields of
-                northeastern B.C. He spent decades in the gas industry and a
-                subsequent bicycle shop, all while writing on the side.
-              </p>
-              <p>
-                In 2015, Pat retired to write full-time. Since then he has
-                produced four distinct series — the gritty, dystopian{" "}
-                <em>Terry Reid Cycle</em>; the WW2 naval adventure series{" "}
-                <em>Gray Sides at Dawn</em>; the time-travel mystery{" "}
-                <em>Time Sleuths</em>; and the warm cycling romance of the{" "}
-                <em>Gypsies</em> books — as well as short stories published in
-                compilations and anthologies.
-              </p>
-              <p>
-                A lifelong cyclist who has raced on- and off-road for decades, Ferris
-                brings authentic detail and hard-won experience to every page
-                he writes.
-              </p>
-            </div>
+          {/* Stats row */}
+          <div className="flex flex-wrap gap-8 mt-10 pt-10 border-t border-border">
+            {[
+              { n: "16+", label: "Books published" },
+              { n: "4", label: "Series" },
+              { n: "50+", label: "Years in Fort St. John" },
+            ].map(({ n, label }) => (
+              <div key={label}>
+                <p className="font-display text-3xl font-medium text-ink">{n}</p>
+                <p className="font-body text-xs text-muted uppercase tracking-widest mt-1">{label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -474,163 +464,148 @@ function BookCover({
   coverImage?: string;
   isNew?: boolean;
 }) {
-  if (coverImage) {
-    return (
-      <div className="relative rounded-sm overflow-hidden w-full" style={{ aspectRatio: "2/3" }}>
-        <img src={coverImage} alt={title} className="w-full h-full object-cover" />
-        {isNew && (
-          <span className="absolute top-2 right-2 font-body text-[9px] font-semibold uppercase tracking-widest px-2 py-1 rounded bg-gold text-ink">
-            New
-          </span>
-        )}
-      </div>
-    );
-  }
   return (
     <div
-      className="book-cover rounded-sm w-full flex flex-col items-center justify-end p-4"
-      style={{ background: bg }}
+      className="relative rounded-sm overflow-hidden w-full"
+      style={{ aspectRatio: "2/3", background: coverImage ? "#111" : bg }}
     >
-      <div className="text-center">
-        {subtitle && (
-          <p className="text-white/40 text-[10px] uppercase tracking-widest mb-1 font-body">
-            {subtitle}
+      {coverImage ? (
+        <img
+          src={coverImage}
+          alt={title}
+          className="w-full h-full object-contain"
+        />
+      ) : (
+        <div className="w-full h-full flex flex-col items-center justify-end p-3 text-center">
+          {subtitle && (
+            <p className="text-white/40 text-[9px] uppercase tracking-widest mb-1 font-body">
+              {subtitle}
+            </p>
+          )}
+          <p className="text-white/80 text-xs font-display font-semibold leading-snug">
+            {title}
           </p>
-        )}
-        <p className="text-white/80 text-sm font-display font-semibold leading-snug">
-          {title}
-        </p>
-      </div>
+        </div>
+      )}
+      {isNew && (
+        <span className="absolute top-2 right-2 font-body text-[9px] font-semibold uppercase tracking-widest px-2 py-1 rounded bg-gold text-ink leading-none">
+          New
+        </span>
+      )}
     </div>
   );
 }
 
-function SeriesSection({ series, reversed }: { series: Series; reversed?: boolean }) {
+function SeriesSection({ series }: { series: Series }) {
+  const coverWidth = series.books.length >= 6 ? 100 : series.books.length >= 3 ? 120 : 160;
+
   return (
-    <section
-      id={series.id}
-      className="border-b border-border py-20 md:py-28"
-    >
+    <section id={series.id} className="border-b border-border py-16 md:py-20">
       <div className="max-w-6xl mx-auto px-6">
+
         {/* Series header */}
-        <div className="mb-14 max-w-2xl">
-          <span
-            className="font-body text-xs uppercase tracking-[0.2em] font-medium mb-3 inline-block"
-            style={{ color: series.accentColor }}
-          >
-            {series.genre}
-          </span>
-          <h2 className="font-display text-4xl md:text-5xl font-medium text-ink leading-tight mb-4">
-            {series.name}
-          </h2>
-          <p
-            className="font-body text-lg italic mb-5"
-            style={{ color: series.accentColor }}
-          >
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+          <div>
+            <span
+              className="font-body text-xs uppercase tracking-[0.2em] font-medium mb-2 inline-block"
+              style={{ color: series.accentColor }}
+            >
+              {series.genre}
+            </span>
+            <h2 className="font-display text-3xl md:text-4xl font-medium text-ink leading-tight">
+              {series.name}
+            </h2>
+          </div>
+          <p className="font-body text-sm italic text-muted max-w-sm md:text-right">
             {series.tagline}
           </p>
-          <p className="font-body text-muted leading-relaxed">
-            {series.description}
-          </p>
         </div>
 
-        {/* Books grid */}
-        <div
-          className={`grid gap-6 mb-14 ${
-            series.books.length === 1
-              ? "grid-cols-1 max-w-xs"
-              : series.books.length <= 3
-              ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-3"
-              : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-6"
-          }`}
-        >
-          {series.books.map((book) => (
-            <a
-              key={book.title}
-              href={book.amazonUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group block"
-            >
-              <BookCover
-                title={book.title}
-                subtitle={book.subtitle}
-                bg={series.coverBg}
-                coverImage={book.coverImage}
-                isNew={book.isNew}
-              />
-              <div className="mt-3 px-0.5">
-                <h3 className="font-body text-sm font-medium text-ink group-hover:text-burgundy transition-colors leading-snug">
-                  {book.title}
-                </h3>
-                {book.subtitle && (
-                  <p className="font-body text-xs text-muted mt-0.5">
-                    {book.subtitle}
-                  </p>
-                )}
-              </div>
-            </a>
-          ))}
-        </div>
+        {/* Two-column: covers + description */}
+        <div className="grid md:grid-cols-[auto_1fr] gap-10 md:gap-14 mb-10">
 
-        {/* Book descriptions (for series with multiple books) */}
-        {series.books.length > 1 && (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
+          {/* Bookshelf covers — fixed small width */}
+          <div className="flex flex-row flex-wrap md:flex-col gap-3">
             {series.books.map((book) => (
-              <div
+              <a
                 key={book.title}
-                className="border border-border rounded-sm p-5 bg-parchment/40"
+                href={book.amazonUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex-shrink-0"
+                style={{ width: coverWidth }}
+                title={book.title}
               >
-                <p className="font-body text-xs uppercase tracking-widest text-muted mb-1">
-                  {book.subtitle}
-                </p>
-                <h4 className="font-display text-lg font-semibold text-ink mb-2">
-                  {book.title}
-                </h4>
-                <p className="font-body text-sm text-muted leading-relaxed mb-4">
-                  {book.description}
-                </p>
+                <BookCover
+                  title={book.title}
+                  subtitle={book.subtitle}
+                  bg={series.coverBg}
+                  coverImage={book.coverImage}
+                  isNew={book.isNew}
+                />
+              </a>
+            ))}
+          </div>
+
+          {/* Series description + individual book list */}
+          <div>
+            <p className="font-body text-muted leading-relaxed mb-8 max-w-xl">
+              {series.description}
+            </p>
+
+            <div className="space-y-0">
+              {series.books.map((book, i) => (
                 <a
+                  key={book.title}
                   href={book.amazonUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-body text-xs font-medium transition-colors"
-                  style={{ color: series.accentColor }}
+                  className="group flex items-start gap-4 py-4 border-t border-border first:border-t-0 hover:bg-parchment/40 -mx-4 px-4 transition-colors rounded-sm"
                 >
-                  Buy on Amazon ↗
+                  <span
+                    className="font-body text-xs text-muted/50 w-4 flex-shrink-0 mt-1 tabular-nums"
+                  >
+                    {i + 1}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h4 className="font-body text-sm font-medium text-ink group-hover:underline leading-snug">
+                        {book.title}
+                      </h4>
+                      {book.isNew && (
+                        <span
+                          className="text-[9px] font-semibold uppercase tracking-widest px-2 py-0.5 rounded font-body"
+                          style={{ background: "#C4963A", color: "#0A1B2A" }}
+                        >
+                          New
+                        </span>
+                      )}
+                    </div>
+                    <p className="font-body text-xs text-muted mt-1 leading-relaxed line-clamp-2">
+                      {book.description}
+                    </p>
+                  </div>
+                  <span
+                    className="flex-shrink-0 font-body text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity hidden sm:block"
+                    style={{ color: series.accentColor }}
+                  >
+                    Buy ↗
+                  </span>
                 </a>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        )}
-
-        {/* Single book description */}
-        {series.books.length === 1 && (
-          <div className="mb-14 max-w-xl border border-border rounded-sm p-6 bg-parchment/40">
-            <p className="font-body text-sm text-muted leading-relaxed mb-4">
-              {series.books[0].description}
-            </p>
-            <a
-              href={series.books[0].amazonUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-body text-sm font-medium transition-colors"
-              style={{ color: series.accentColor }}
-            >
-              Buy on Amazon ↗
-            </a>
-          </div>
-        )}
+        </div>
 
         {/* Reviews */}
-        <div className="grid sm:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 gap-6 pt-8 border-t border-border">
           {series.reviews.map((review, i) => (
             <blockquote
               key={i}
-              className="border-l-2 pl-5 py-1"
+              className="border-l-2 pl-4"
               style={{ borderColor: series.accentColor }}
             >
-              <p className="font-display italic text-lg text-ink/80 leading-relaxed mb-2">
+              <p className="font-display italic text-base text-ink/75 leading-relaxed mb-2">
                 &ldquo;{review.text}&rdquo;
               </p>
               <cite className="font-body text-xs text-muted not-italic">
@@ -639,6 +614,7 @@ function SeriesSection({ series, reversed }: { series: Series; reversed?: boolea
             </blockquote>
           ))}
         </div>
+
       </div>
     </section>
   );
@@ -646,36 +622,36 @@ function SeriesSection({ series, reversed }: { series: Series; reversed?: boolea
 
 function StandaloneBooks() {
   return (
-    <section className="border-b border-border py-20 md:py-28">
+    <section className="border-b border-border py-16 md:py-20">
       <div className="max-w-6xl mx-auto px-6">
-        <p className="font-body text-xs uppercase tracking-[0.2em] text-muted mb-4">
+        <p className="font-body text-xs uppercase tracking-[0.2em] text-muted mb-2">
           Standalone Fiction
         </p>
-        <h2 className="font-display text-4xl md:text-5xl font-medium text-ink mb-12 leading-tight">
+        <h2 className="font-display text-3xl md:text-4xl font-medium text-ink mb-10 leading-tight">
           Beyond the Series
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="flex flex-wrap gap-6">
           {STANDALONE_BOOKS.map((book) => (
             <a
               key={book.title}
               href={book.amazonUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block"
+              className="group flex gap-4 items-start"
             >
-              <BookCover
-                title={book.title}
-                bg="#2E2E3A"
-                coverImage={book.coverImage}
-              />
-              <div className="mt-3 px-0.5">
-                <h3 className="font-body text-sm font-medium text-ink group-hover:text-burgundy transition-colors leading-snug">
+              <div className="flex-shrink-0 w-20 rounded-sm overflow-hidden" style={{ aspectRatio: "2/3", background: "#111" }}>
+                {book.coverImage && (
+                  <img src={book.coverImage} alt={book.title} className="w-full h-full object-contain" />
+                )}
+              </div>
+              <div className="max-w-xs">
+                <h3 className="font-body text-sm font-medium text-ink group-hover:underline leading-snug mb-1">
                   {book.title}
                 </h3>
-                <p className="font-body text-xs text-muted mt-1 leading-relaxed">
+                <p className="font-body text-xs text-muted leading-relaxed mb-2">
                   {book.description}
                 </p>
-                <span className="font-body text-xs font-medium text-muted mt-2 inline-block">
+                <span className="font-body text-xs text-muted font-medium">
                   Buy on Amazon ↗
                 </span>
               </div>
@@ -689,25 +665,28 @@ function StandaloneBooks() {
 
 function ShortStories() {
   return (
-    <section id="short-stories" className="border-b border-border py-20 md:py-28 bg-parchment/30">
+    <section id="short-stories" className="border-b border-border py-16 md:py-20 bg-parchment/40">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <span className="font-body text-xs uppercase tracking-[0.2em] text-muted mb-3 inline-block">
+        <div className="flex flex-col sm:flex-row gap-8 items-start">
+          {/* Small cover */}
+          <div className="flex-shrink-0 w-24 rounded-sm overflow-hidden" style={{ aspectRatio: "2/3", background: "#111" }}>
+            <img
+              src="/book-covers/short-stories-fragmented-thoughts.jpg"
+              alt="Fragmented Thoughts Random Directions"
+              className="w-full h-full object-contain"
+            />
+          </div>
+          {/* Text */}
+          <div className="max-w-xl">
+            <span className="font-body text-xs uppercase tracking-[0.2em] text-muted mb-2 block">
               Short Fiction
             </span>
-            <h2 className="font-display text-4xl md:text-5xl font-medium text-ink mb-4 leading-tight">
-              Fragmented Thoughts,
-              <br />
+            <h2 className="font-display text-2xl md:text-3xl font-medium text-ink mb-3 leading-tight">
+              Fragmented Thoughts,{" "}
               <em>Random Directions</em>
             </h2>
-            <p className="font-body text-muted leading-relaxed mb-6">
-              Pat Ferris has been writing short fiction throughout his career,
-              with stories published in compilations and in print. This
-              collection — <em>Fragmented Thoughts Random Directions</em> —
-              gathers a range of Ferris's shorter works: sharp, genre-spanning,
-              and unpredictable, reflecting the same restless creative energy
-              that drives his longer series.
+            <p className="font-body text-muted leading-relaxed mb-5 text-sm">
+              Fifteen off-beat, genre-spanning short stories — intriguing, funny, cautionary, and always thought-provoking. A window into the restless imagination behind all four series.
             </p>
             <a
               href="https://www.amazon.com/Fragmented-Thoughts-Random-Directions-Collection/dp/1999092023/"
@@ -717,25 +696,6 @@ function ShortStories() {
             >
               Buy on Amazon ↗
             </a>
-          </div>
-
-          <div className="flex justify-center">
-            <div
-              className="w-48 rounded-sm"
-              style={{
-                aspectRatio: "2/3",
-                background: "linear-gradient(145deg, #2E2E3A 0%, #1A1A2E 100%)",
-              }}
-            >
-              <div className="w-full h-full flex flex-col items-center justify-end pb-6 px-4 text-center">
-                <p className="text-white/40 text-[10px] uppercase tracking-widest mb-1 font-body">
-                  Short Stories
-                </p>
-                <p className="text-white/80 text-sm font-display font-semibold leading-snug">
-                  Fragmented Thoughts Random Directions
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -940,13 +900,13 @@ function NewBookBanner() {
 
           {/* Cover */}
           <div
-            className="hidden md:block w-full rounded-sm overflow-hidden"
-            style={{ aspectRatio: "2/3" }}
+            className="hidden md:block w-full rounded-sm overflow-hidden flex-shrink-0"
+            style={{ width: 200, aspectRatio: "2/3", background: "#111" }}
           >
             <img
               src={NEWEST_BOOK.coverImage}
               alt={NEWEST_BOOK.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
           </div>
         </div>
