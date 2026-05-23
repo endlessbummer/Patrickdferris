@@ -176,11 +176,20 @@ const SERIES: Series[] = [
     books: [
       {
         title: "Time Sleuths",
-        subtitle: "The Complete Series",
+        subtitle: "Book 1",
         description:
           "Five mysteries in one volume. Edward, Smitty, and Mae navigate smartphones, CCTV, and the London Underground armed with only Victorian instinct and each other. Chief Inspector Hardcastle is skeptical — but even he can't argue with results.",
         amazonUrl: "https://www.amazon.com/Time-Sleuths-Patrick-D-Ferris-ebook/dp/B0D8K3K7R1/",
         coverImage: "/book-covers/time-sleuths.jpg",
+      },
+      {
+        title: "Time Sleuths Return",
+        subtitle: "Book 2 — Newest Release",
+        description:
+          "Three Victorian detectives, five baffling mysteries. The 'Proper Investigations' trio have settled into the 21st century of WiFi, the internet, and social media madness. They consult on a lurid TV assassinations game gone awry, then receive an urgent Royal Navy request for discreet help with on-board sabotage — revealing a long-forgotten treaty and a hidden threat to world stability. Canadian tourists, the London Millennium Wheel, and an over-eager AI bot bring a strange case to Baker Street. An unsettling in-house mystery Smitty did not see coming, and an astonishing new connection, send the trio racing to prevent a Royal assassination. 130 years have passed, but Edward, Mae, and Smitty prove once again they still know how to solve a crime.",
+        amazonUrl: "https://www.amazon.com/Time-Sleuths-Return-Patrick-Ferris-ebook/dp/B0FSBBBD2X/",
+        coverImage: "/book-covers/time-sleuths-return.jpg",
+        isNew: true,
       },
     ],
     reviews: [
