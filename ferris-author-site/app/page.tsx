@@ -66,21 +66,21 @@ const SERIES: Series[] = [
         coverImage: "/book-covers/gray-sides-01-hms-brock.jpg",
       },
       {
+        title: "Rebel Rose",
+        subtitle: "Book 2",
+        description:
+          "Newly promoted Captain Harry Holden takes command of HMCS Rose — a luxury liner frantically converted for war — and plies the harsh northern Pacific seeking the Axis foes. Ancient guns, a cast-off crew, and a horizon bristling with torpedoes.",
+        amazonUrl: "https://www.amazon.com/Gray-Sides-Dawn-Rebel-Sister/dp/1068871776/",
+        coverImage: "/book-covers/gray-sides-03-rebel-rose.webp",
+      },
+      {
         title: "Harry's Gold",
-        subtitle: "Book 2 — Newest Release",
+        subtitle: "Book 3 — Newest Release",
         description:
           "Captain Harry Holden and his 'Holden's Privateers' are assigned a secret mission: cross the most Axis-patrolled sea in the world to recover millions in hidden gold bars before the Germans do. An Adriatic pirate, 100 Royal Marines, and a Jutland veteran join the operation.",
         amazonUrl: "https://www.amazon.com/Gray-Sides-Dawn-DEFY-Harrys/dp/1068871792/",
         coverImage: "/book-covers/gray-sides-02-harrys-gold.webp",
         isNew: true,
-      },
-      {
-        title: "Rebel Rose",
-        subtitle: "Book 3",
-        description:
-          "Newly promoted Captain Harry Holden takes command of HMCS Rose — a luxury liner frantically converted for war — and plies the harsh northern Pacific seeking the Axis foes. Ancient guns, a cast-off crew, and a horizon bristling with torpedoes.",
-        amazonUrl: "https://www.amazon.com/Gray-Sides-Dawn-Rebel-Sister/dp/1068871776/",
-        coverImage: "/book-covers/gray-sides-03-rebel-rose.webp",
       },
     ],
     reviews: [
@@ -413,7 +413,7 @@ function About() {
 
           {/* Pull quote accent */}
           <p className="font-display text-xl md:text-2xl italic text-ink/70 leading-relaxed mb-8 border-l-2 border-gold pl-6">
-            Born in Winnipeg, raised in Victoria, and rooted in Fort St. John, B.C. since 1975 — Pat Ferris spent decades in the natural gas industry before retiring in 2015 to write full-time.
+            Born in Winnipeg, raised in Victoria, and rooted in Fort St. John, B.C. since 1975.
           </p>
 
           <div className="space-y-4 font-body text-muted leading-relaxed max-w-2xl">
@@ -437,7 +437,6 @@ function About() {
             {[
               { n: "16+", label: "Books published" },
               { n: "4", label: "Series" },
-              { n: "50+", label: "Years in Fort St. John" },
             ].map(({ n, label }) => (
               <div key={label}>
                 <p className="font-display text-3xl font-medium text-ink">{n}</p>
@@ -595,24 +594,6 @@ function SeriesSection({ series }: { series: Series }) {
               ))}
             </div>
           </div>
-        </div>
-
-        {/* Reviews */}
-        <div className="grid sm:grid-cols-2 gap-6 pt-8 border-t border-border">
-          {series.reviews.map((review, i) => (
-            <blockquote
-              key={i}
-              className="border-l-2 pl-4"
-              style={{ borderColor: series.accentColor }}
-            >
-              <p className="font-display italic text-base text-ink/75 leading-relaxed mb-2">
-                &ldquo;{review.text}&rdquo;
-              </p>
-              <cite className="font-body text-xs text-muted not-italic">
-                {review.attribution}
-              </cite>
-            </blockquote>
-          ))}
         </div>
 
       </div>
@@ -915,23 +896,6 @@ function NewBookBanner() {
   );
 }
 
-/* ─── Books Intro (other series) ────────────────────────── */
-function BooksIntro() {
-  return (
-    <div className="max-w-6xl mx-auto px-6 pt-16 md:pt-20 pb-4">
-      <p className="font-body text-xs uppercase tracking-[0.2em] text-muted mb-4">
-        All Four Series
-      </p>
-      <h2 className="font-display text-5xl md:text-6xl font-light text-ink leading-tight">
-        Four worlds.
-        <br />
-        <em className="font-medium">Endless stories.</em>
-      </h2>
-      <div className="mt-6 h-px bg-border w-full" />
-    </div>
-  );
-}
-
 /* ─── Page ────────────────────────────────────────────────── */
 export default function Page() {
   const [graySides, ...otherSeries] = SERIES;
@@ -942,7 +906,6 @@ export default function Page() {
       <About />
       <NewBookBanner />
       <SeriesSection series={graySides} />
-      <BooksIntro />
       {otherSeries.map((series) => (
         <SeriesSection key={series.id} series={series} />
       ))}
